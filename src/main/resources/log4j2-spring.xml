@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <JsonTemplateLayout eventTemplateUri="classpath:EcsLayout.json">
+                <EventTemplateAdditionalField key="appName" value="xscale-common-utils-service" />
+            </JsonTemplateLayout>
+        </Console>
+        <!-- OTel appender -->
+        <OpenTelemetry name="OpenTelemetryAppender"/>
+    </Appenders>
+    <Loggers>
+        <!-- LOG everything at INFO level -->
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="OpenTelemetryAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>
