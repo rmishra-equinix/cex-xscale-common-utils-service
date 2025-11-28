@@ -1,9 +1,11 @@
 package com.equinix.xscale.common.service;
 
 import com.equinix.xscale.common.repository.ProjectRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class ProjectService {
 
     private final ProjectRepository projectRepository;
