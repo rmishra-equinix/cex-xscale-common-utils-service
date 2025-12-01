@@ -8,11 +8,11 @@
 		<version>4.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.equinix.xscale.common</groupId>
-	<artifactId>cex-xscale-common-utils-service</artifactId>
+	<groupId>com.rmishra.common</groupId>
+	<artifactId>rmishra-common</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
-	<name>cex-xscale-common-utils-service</name>
+	<name>rmishra-common</name>
 	<description>Common utilities for xscale services</description>
 	<properties>
 		<!-- language encoding -->
@@ -22,28 +22,13 @@
 		<maven.compiler.target>17</maven.compiler.target>
 
 	</properties>
-<!--	<profiles>-->
-<!--		<profile>-->
-<!--			<id>default</id>-->
-			<distributionManagement>
-				<repository>
-					<id>nexus</id>
-					<name>equinix-nexus</name>
-					<url>http://vmclxnexusp01.corp.equinix.com:8081/repository/tibcodevrepo</url>
-				</repository>
-			</distributionManagement>
-<!--		</profile>-->
-<!--		<profile>-->
-<!--			<id>enterprise</id>-->
-<!--			<distributionManagement>-->
-<!--				<repository>-->
-<!--					<id>nexus</id>-->
-<!--					<name>EnterpriseIT</name>-->
-<!--					<url>https://nexus.corp.equinix.com/nexus/repository/EnterpriseIT-releases</url>-->
-<!--				</repository>-->
-<!--			</distributionManagement>-->
-<!--		</profile>-->
-<!--	</profiles>-->
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>equinix-nexus</name>
+			<url>http://vmclxnexusp01.corp.equinix.com:8081/repository/tibcodevrepo</url>
+		</repository>
+	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -116,18 +101,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>3.0.0-M7</version>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

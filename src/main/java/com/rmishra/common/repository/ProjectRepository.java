@@ -1,6 +1,6 @@
-package com.equinix.xscale.common.repository;
+package com.rmishra.common.repository;
 
-import com.equinix.xscale.common.entity.ProjectEntity;
+import com.rmishra.common.entity.ProjectEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

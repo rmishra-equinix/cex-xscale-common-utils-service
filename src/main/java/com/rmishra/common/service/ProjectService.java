@@ -1,6 +1,6 @@
-package com.equinix.xscale.common.service;
+package com.rmishra.common.service;
 
-import com.equinix.xscale.common.repository.ProjectRepository;
+import com.rmishra.common.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
