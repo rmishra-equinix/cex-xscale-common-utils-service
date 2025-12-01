@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -14,22 +14,36 @@
 	<packaging>jar</packaging>
 	<name>cex-xscale-common-utils-service</name>
 	<description>Common utilities for xscale services</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
 	<properties>
-		<java.version>17</java.version>
+		<!-- language encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- JDK version -->
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+
 	</properties>
+<!--	<profiles>-->
+<!--		<profile>-->
+<!--			<id>default</id>-->
+			<distributionManagement>
+				<repository>
+					<id>nexus</id>
+					<name>equinix-nexus</name>
+					<url>http://vmclxnexusp01.corp.equinix.com:8081/repository/tibcodevrepo</url>
+				</repository>
+			</distributionManagement>
+<!--		</profile>-->
+<!--		<profile>-->
+<!--			<id>enterprise</id>-->
+<!--			<distributionManagement>-->
+<!--				<repository>-->
+<!--					<id>nexus</id>-->
+<!--					<name>EnterpriseIT</name>-->
+<!--					<url>https://nexus.corp.equinix.com/nexus/repository/EnterpriseIT-releases</url>-->
+<!--				</repository>-->
+<!--			</distributionManagement>-->
+<!--		</profile>-->
+<!--	</profiles>-->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -64,7 +78,6 @@
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -81,6 +94,30 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M7</version>
+				<dependencies>
+					<dependency>
+						<groupId>me.fabriciorby</groupId>
+						<artifactId>maven-surefire-junit5-tree-reporter</artifactId>
+						<version>1.1.0</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<reportFormat>plain</reportFormat>
+					<consoleOutputReporter>
+						<disable>true</disable>
+					</consoleOutputReporter>
+					<statelessTestsetInfoReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporterUnicode"/>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>3.0.0-M7</version>
+			</plugin>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
@@ -92,13 +129,28 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.4.1</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals><goal>jar</goal></goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals><goal>jar</goal></goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-
-	<distributionManagement>
-		<repository>
-			<id>your-repo-id</id>
-			<url>https://your.repo.url/repository/maven-releases/</url>
-		</repository>
-	</distributionManagement>
 </project>
